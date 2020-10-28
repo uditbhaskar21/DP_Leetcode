@@ -1,0 +1,25 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        int result = nums[0];
+        int prod = 1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                prod = 1;
+                result = Math.max(0, result);
+                }
+            else {
+                prod *= nums[i];
+                result = Math.max(prod, result);
+            }
+        }
+        prod = 1;
+        for (int i = nums.length - 1; i>=0; i--) {
+            if (nums[i] == 0) prod = 1;
+            else {
+                prod *= nums[i];
+                result = Math.max(prod, result);
+            }
+        }
+        return result;
+    }
+}
