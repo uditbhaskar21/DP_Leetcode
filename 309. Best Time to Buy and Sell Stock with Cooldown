@@ -1,0 +1,34 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length==0){
+            return 0;
+        }
+        int obp = -prices[0];
+        int osp=0;
+        int ocp=0;
+        for(int i=1;i<prices.length;i++){
+            int nbp=0;
+            int nsp=0;
+            int ncp=0;
+            if(ocp-prices[i]>obp){
+                nbp = ocp-prices[i];
+            }else{
+                nbp= obp;
+            }
+            if(prices[i]+obp>osp){
+                nsp=prices[i]+obp;           
+            }else{
+                nsp = osp;
+            }
+            if(osp>ocp){
+                ncp=osp;
+            }else{
+                ncp=ocp;
+            }
+            obp = nbp;
+            osp=nsp;
+            ocp=ncp;
+        }
+        return osp;
+    }
+}
